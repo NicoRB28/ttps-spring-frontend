@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareModule } from './modules/share/share.module';
+import { EventModule } from './modules/event/event.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ShareModule } from './modules/share/share.module';
     AppRoutingModule,
     NgbModule,
     ShareModule,
+    EventModule
   ],
   providers: [],
   bootstrap: [AppComponent]

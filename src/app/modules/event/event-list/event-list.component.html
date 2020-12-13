@@ -1,0 +1,14 @@
+<ng-template #testModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+      </div>
+    </form>
+    <button (click)="closeModal()">close</button>
+  </div>
+</ng-template>
+<button (click)="showModal()">mostrar</button>

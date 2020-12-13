@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { UtilService } from 'src/app/modules/core/util-services/util.service';
+import { EventSandbox } from '../event.sandbox';
 
 @Component({
   selector: 'app-event-list',
@@ -8,27 +8,27 @@ import { UtilService } from 'src/app/modules/core/util-services/util.service';
 })
 export class EventListComponent implements OnInit {
 
-  @ViewChild('testModal')
-  testModal: TemplateRef<{}>;
+  events: Event[] = [];
 
-  modalRef;
 
-  constructor(private utilService: UtilService) { }
+  constructor(private sandbox: EventSandbox) { }
 
   ngOnInit(): void {
+    this.sandbox.events$.subscribe(data => this.events = data);
+    this.sandbox.getAllEvents();
   }
 
-  showModal():void{
-    const options = {
-      animation: true,
-      centered: true,
+  // showModal():void{
+  //   const options = {
+  //     animation: true,
+  //     centered: true,
 
-    }
-    this.modalRef = this.utilService.showModal(this.testModal,options);
-  }
+  //   }
+  //   this.modalRef = this.utilService.showModal(this.testModal,options);
+  // }
 
-  closeModal():void {
-    this.modalRef.close();
-  }
+  // closeModal():void {
+  //   this.modalRef.close();
+  // }
 
 }

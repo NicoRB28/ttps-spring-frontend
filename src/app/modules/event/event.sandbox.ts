@@ -36,4 +36,13 @@ export class EventSandbox {
 
   }
 
+  public updateEvent(data: Event):void {
+    this.eventHttp.update(data).subscribe(data => {
+      alert("Se ha editado el evento.");
+      this.getAllEvents();
+    }, error => {
+      alert("Ha ocurrido un error al editar el evento");
+    })
+  }
+
 }

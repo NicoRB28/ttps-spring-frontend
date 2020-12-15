@@ -42,6 +42,7 @@ export class EventListComponent implements OnInit{
   submitForm(event:Event):void {
     //TODO: pegar al endpoint de update
     console.log(event);
+    this.eventSandbox.updateEvent(event);
     this.closeModalForm(event);
   }
 

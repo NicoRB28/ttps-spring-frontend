@@ -23,4 +23,10 @@ export class EventHttpService {
     return this.http.delete<void>(this.baseUrl+`${id}`);
   }
 
+  update(data:Event):Observable<Event> {
+    //TODO: no funciona, data.id imprime undefine
+    console.log(data.id);
+    return this.http.put<Event>(this.baseUrl+`${data.id}`, data);
+  }
+
 }

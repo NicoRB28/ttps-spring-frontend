@@ -12,7 +12,7 @@
     <button class="btn btn-success ml-3" (click)="showModal()">Nuevo Evento</button>
   </div>
   <div class="mt-3">
-    <app-event-list ></app-event-list>
+    <app-event-list [events]="events" ></app-event-list>
   </div>
 </div>
 
@@ -21,13 +21,6 @@
     <h4 class="modal-title" id="modal-basic-title">Crear Evento</h4>
   </div>
   <div class="modal-body">
-    <!-- <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-      </div>
-    </form> -->
-    <app-event-create-form (submitEvent)="closeModalForm($event)"></app-event-create-form>
-    <!-- <button (click)="closeModal()">close</button> -->
+    <app-event-create-form [data]="data" (closeEvent)="closeModal($event)" (submitEvent)="submitForm($event)"></app-event-create-form>
   </div>
 </ng-template>
-<button (click)="showModal()">mostrar</button>

@@ -16,5 +16,7 @@ export class Event {
   phone: string;
   description: string;
   payment: string;
+  city: string;
 
+  constructor(){}
 }

@@ -5,6 +5,8 @@
         <th scope="col">Nombre</th>
         <th scope="col">Lugar</th>
         <th scope="col">Fecha</th>
+        <th scope="col">Editar</th>
+        <th scope="col">borrar</th>
       </tr>
     </thead>
     <tbody>
@@ -12,23 +14,23 @@
         <td>{{event.name}}</td>
         <td>{{event.address}}, {{event.state}}, {{event.province}}</td>
         <td>{{event.dayAndTime | date: 'shortDate'}}</td>
+        <td>
+          <a (click)="showModal(event)" style="color: cadetblue; cursor: pointer;">Editar</a>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteEvent(event)">Borra</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<!--
-<ng-template #testModal let-modal>
+<ng-template #editModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Editar Evento</h4>
   </div>
   <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-      </div>
-    </form>
-    <button (click)="closeModal()">close</button>
+    <app-event-create-form [data]="data" (closeEvent)="closeModalForm($event)" (submitEvent)="submitForm($event)"></app-event-create-form>
   </div>
-</ng-template> -->
-<!-- <button (click)="showModal()">mostrar</button> -->
+</ng-template>
+

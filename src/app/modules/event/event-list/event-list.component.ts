@@ -1,4 +1,6 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Event } from 'src/app/model/event';
+import { UtilService } from '../../core/util-services/util.service';
 import { EventSandbox } from '../event.sandbox';
 
 @Component({
@@ -6,29 +8,44 @@ import { EventSandbox } from '../event.sandbox';
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.css']
 })
-export class EventListComponent implements OnInit {
+export class EventListComponent implements OnInit{
 
+  @Input("events")
   events: Event[] = [];
 
+  data:Event = new Event();
 
-  constructor(private sandbox: EventSandbox) { }
+  modalRef;
+
+  @ViewChild('editModal')
+  editModal:TemplateRef<{}>;
+
+  constructor(private util: UtilService,
+              private eventSandbox: EventSandbox) { }
 
   ngOnInit(): void {
-    this.sandbox.events$.subscribe(data => this.events = data);
-    this.sandbox.getAllEvents();
   }
 
-  // showModal():void{
-  //   const options = {
-  //     animation: true,
-  //     centered: true,
+  showModal(event:Event):void{
+    const options = {
+      animation: true,
+      centered: true,
+    }
+    this.data = event;
+    this.modalRef = this.util.showModal(this.editModal,options);
+  }
 
-  //   }
-  //   this.modalRef = this.utilService.showModal(this.testModal,options);
-  // }
+  closeModalForm(event):void{
+    this.modalRef.close();
+  }
 
-  // closeModal():void {
-  //   this.modalRef.close();
-  // }
+  submitForm(event:Event):void {
+    //TODO: pegar al endpoint de update
+    console.log(event);
+    this.closeModalForm(event);
+  }
 
+  deleteEvent(event: Event):void{
+    this.eventSandbox.deleteEvent(event.id);
+  }
 }

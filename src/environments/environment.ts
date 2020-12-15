@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendApi:"http://localhost:8080/ttps-spring/",
+  backendApi:"http://localhost:8080/",
 };
 
 /*

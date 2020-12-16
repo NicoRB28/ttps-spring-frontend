@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { CreateUser } from 'src/app/model/createUser';
 import { UserHttpService } from '../core/http/user-http.service';
@@ -14,14 +15,16 @@ export class UserSandbox {
 
   constructor(private http: UserHttpService,
               private router: Router,
-              private loginService: LoginService){}
+              private loginService: LoginService,
+              private toastr: ToastrService){}
 
   login(username:string, password:string):void{
     this.http.loging(username,password).subscribe(res => {
       this.loginService.setUserLoggedIn(res);
+      this.toastr.success("Sesión iniciada correctamente");
       this.router.navigate(['events']);
     }, error => {
-      alert("No ha sido posible iniciar sesión" );
+      this.toastr.error("No ha sido posible iniciar sesión");
     });
   }
 

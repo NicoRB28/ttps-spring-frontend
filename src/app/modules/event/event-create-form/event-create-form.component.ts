@@ -48,7 +48,6 @@ export class EventCreateFormComponent implements OnInit {
 
   submitForm():void{
     this.setUpCreateRequest();
-    //this.eventSandbox.createEvent(this.newEvent);
     this.submitEvent.emit(this.newEvent);
   }
 

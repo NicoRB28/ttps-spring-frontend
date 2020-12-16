@@ -8,6 +8,8 @@ import { ShareModule } from './modules/share/share.module';
 import { EventModule } from './modules/event/event.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
+import { AuthGuard } from './model/authGuard';
+
 
 
 
@@ -26,7 +28,7 @@ import { UserModule } from './modules/user/user.module';
     EventModule,
     UserModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

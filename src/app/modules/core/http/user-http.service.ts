@@ -16,7 +16,6 @@ export class UserHttpService {
     let header = new HttpHeaders();
     header = header.set('usuario',username);
     header = header.set('clave',password);
-    let res;
     return this.http.post<any>(this.baseUrl+"autenticacion",null, {headers: header});
   }
 

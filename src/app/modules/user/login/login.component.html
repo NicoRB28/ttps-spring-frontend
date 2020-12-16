@@ -1,12 +1,28 @@
 <div class="container mt-5">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-          <input type="email" class="form-control" formControlName="username" required placeholder="username: name@example.com">
+      <div class="form-group row justify-content-center">
+          <label for="username" class=" mr-5">Usuario:</label>
+          <input
+            id="username"
+            type="email"
+            class="form-control col-md-5"
+            formControlName="username"
+            required placeholder="Ingrese su nombre de usuario">
       </div>
-      <div class="form-group">
-          <input type="password" class="form-control" formControlName="password" required placeholder="password: admin123">
+      <div class="form-group row justify-content-center">
+          <label for="password" class="mr-3">Contraseña:</label>
+          <input
+            id="password"
+            type="password"
+            class="form-control col-md-5 justify-content-center"
+            formControlName="password"
+            required placeholder="password: admin123">
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
+      <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
   </form>
 </div>
-<a routerLink='/register'>Registrar</a>
+<div class=" col d-flex justify-content-center">
+  <a href="/register">Registrar</a>
+</div>

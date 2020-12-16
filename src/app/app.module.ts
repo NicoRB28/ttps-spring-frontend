@@ -7,6 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShareModule } from './modules/share/share.module';
 import { EventModule } from './modules/event/event.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UserModule } from './modules/user/user.module';
+
+
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     ShareModule,
     HttpClientModule,
-    EventModule
+    EventModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,11 +12,11 @@ export class UserHttpService {
 
   constructor(private http: HttpClient){}
 
-  loging(username:string, password:string):Observable<any>{
+  loging(username:string, password:string):Observable<CreateUser>{
     let header = new HttpHeaders();
     header = header.set('usuario',username);
     header = header.set('clave',password);
-    return this.http.post<any>(this.baseUrl+"autenticacion",null, {headers: header});
+    return this.http.post<CreateUser>(this.baseUrl+"autenticacion",null, {headers: header});
   }
 
   register(data:CreateUser):Observable<CreateUser>{

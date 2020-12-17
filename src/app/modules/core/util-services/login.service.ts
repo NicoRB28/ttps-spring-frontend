@@ -23,7 +23,7 @@ export class LoginService {
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
-  getUserLoggedIn(){
+  getUserLoggedIn():CreateUser{
     return JSON.parse(localStorage.getItem('currentUser'));
   }
 }

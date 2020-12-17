@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h1 class="display-4">Hola FoodTrucker</h1>
+  <p class="lead">Aquí encontraras todo lo necesario para ser un FoodTrucker exitoso.</p>
+  <hr class="my-4">
+  <p>Encuentra eventos, brinda tus servicios y más!</p>
+  <a class="btn btn-primary btn-lg" (click)="showModal()">Mi Truck</a>
+</div>
+
+
+<ng-template #formTruck let-modal>
+  <div class="modal-header">
+    <h4  class="modal-title" id="modal-basic-title">Truck</h4>
+    <h5 *ngIf="!truck.id" >Usted aun no cargo su truck</h5>
+  </div>
+  <div class="modal-body">
+    <app-truck-form [truck]="truck" (closeEvent)="closeModal($event)" (submitEvent)="submitForm($event)"></app-truck-form>
+  </div>
+</ng-template>

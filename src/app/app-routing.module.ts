@@ -5,14 +5,21 @@ import { EventDashboardComponent } from './modules/event/event-dashboard/event-d
 import {RegisterComponent} from 'src/app/modules/user/register/register.component';
 import { LoginComponent } from './modules/user/login/login.component';
 import { AuthGuard } from 'src/app/model/authGuard';
+import { HomeComponent } from './modules/foodtrucker/home/home.component';
+import { FoodTruckerPermision } from './model/foodTruckerPermision';
+import { FoodtruckerDashboardComponent } from './modules/foodtrucker/foodtrucker-dashboard/foodtrucker-dashboard.component';
+import { TruckFormComponent } from './modules/truck/truck-form/truck-form.component';
 
 
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
-  {path:"events", component:EventDashboardComponent,canActivate: [AuthGuard]},
+  {path:"events", component:EventDashboardComponent,canActivate: [AuthGuard, FoodTruckerPermision]},
   {path:"eventForm", component:EventCreateFormComponent},
+  {path:"foodtrucker", component:HomeComponent},
+  {path:"tuckerDashboard", component:FoodtruckerDashboardComponent},
+  {path:"truckForm", component:TruckFormComponent},
 ];
 
 @NgModule({

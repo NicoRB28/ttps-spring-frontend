@@ -9,7 +9,9 @@ import { EventModule } from './modules/event/event.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
 import { AuthGuard } from './model/authGuard';
-
+import { FoodTruckerPermision } from './model/foodTruckerPermision';
+import { FoodTruckerModule } from './modules/foodtrucker/foodtrucker.module';
+import { TruckerModule } from './modules/truck/truck.module';
 
 
 
@@ -27,8 +29,11 @@ import { AuthGuard } from './model/authGuard';
     HttpClientModule,
     EventModule,
     UserModule,
+    FoodTruckerModule,
+    TruckerModule,
+
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, FoodTruckerPermision],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

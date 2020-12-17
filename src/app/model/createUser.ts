@@ -1,10 +1,11 @@
 export class CreateUser {
 
-  username: string;
-  mail:string;
-  password:string;
-  type:string;
+    userId: number;
+    username: string;
+    mail:string;
+    password:string;
+    type:string;
 
-  constructor(){}
+    constructor(){}
 
-}
+  }

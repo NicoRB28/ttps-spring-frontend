@@ -21,8 +21,14 @@ export class UserSandbox {
   login(username:string, password:string):void{
     this.http.loging(username,password).subscribe(res => {
       this.loginService.setUserLoggedIn(res);
-      this.toastr.success("Sesión iniciada correctamente");
-      this.router.navigate(['events']);
+
+      if(res.type === "FoodTrucker"){
+        this.toastr.success("Bienvenido FoodTrucker");
+        this.router.navigate(['tuckerDashboard']);
+      }else{
+        this.toastr.success("Bienvenido EventPlanner");
+        this.router.navigate(['events']);
+      }
     }, error => {
       this.toastr.error("No ha sido posible iniciar sesión");
     });

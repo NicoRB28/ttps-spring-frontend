@@ -1,11 +1,18 @@
 
 <!-- ownerId: number; -->
 <div class="container mt-4">
-  <form [formGroup]="form"  (ngSubmit)="submitForm()">
+  <form [formGroup]="form" *ngIf="truck" (ngSubmit)="submitForm()">
+    <ng-template #showLoadingState>
+      <h3>Cargando</h3>
+    </ng-template>
     <div class="row">
       <div class="col form-group">
         <label for="name">Nombre:</label>
-        <input formControlName="name" type="text" class="form-control" id="nombre" aria-describedby="nombre">
+        <input formControlName="name"
+               type="text"
+               class="form-control"
+               id="nombre"
+               aria-describedby="nombre">
       </div>
     </div>
     <div class="row">

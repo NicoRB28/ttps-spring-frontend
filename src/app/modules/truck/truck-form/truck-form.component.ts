@@ -2,9 +2,10 @@ import {  Component,  EventEmitter,  Input,  OnInit, Output } from '@angular/cor
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CreateTruck } from 'src/app/model/createTruck';
 import { Truck } from 'src/app/model/truck';
-
+import { takeUntil, tap } from 'rxjs/operators';
 import { LoginService } from '../../core/util-services/login.service';
 import { TruckSandbox } from '../truck.sandbox';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-truck-form',
@@ -32,6 +33,19 @@ export class TruckFormComponent implements OnInit{
 
 
   ngOnInit(): void {
+      this.sandbox.truck$.subscribe(data =>{
+        this.truck = data;
+      });
+      const stopSignal$ = new Subject();
+      this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId)
+                  .pipe(takeUntil(stopSignal$))
+                  .subscribe(data => {
+                    if(data === null){
+                      stopSignal$.next();
+                    }else{
+                      this.form.patchValue(data);
+                    }
+                  });
       this.form = this.fb.group({
         name:[this.truck.name],
         description:[this.truck.description],
@@ -71,8 +85,8 @@ export class TruckFormComponent implements OnInit{
     closeModal():void{
       this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
         this.newTruck = data;
-        this.closeEvent.emit(this.newTruck);
-      })
+      });
+      this.closeEvent.emit(this.newTruck);
     }
 }
 

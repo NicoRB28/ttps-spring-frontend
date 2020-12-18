@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component, OnChanges, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EditTruck } from 'src/app/model/editTruck';
 import { Truck } from 'src/app/model/truck';
 import { LoginService } from '../../core/util-services/login.service';
@@ -11,7 +12,7 @@ import { TruckSandbox } from '../../truck/truck.sandbox';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit,AfterViewChecked {
+export class HomeComponent implements OnInit{
 
   constructor(private sandbox: TruckSandbox,
     private loginService: LoginService,
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit,AfterViewChecked {
   @ViewChild('formTruck')
   formTruck: TemplateRef<{}>;
 
-  modalRef;
+  modalRef: NgbModalRef;
 
 
   ngOnInit(): void {
@@ -33,28 +34,15 @@ export class HomeComponent implements OnInit,AfterViewChecked {
     });
   }
 
-  ngAfterViewChecked():void{
-    this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
-      this.truck = data;
-    });
-  }
-
-
   closeModal(event:Truck):void{
     this.truck = event;
-    console.log(this.truck);
     this.modalRef.close();
-  }
-
-  submitForm(event):void{
-    console.log("submit");
   }
 
   showModal():void{
     const options = {
       animation: true,
       centered: true,
-
     }
     this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
       this.truck = data;

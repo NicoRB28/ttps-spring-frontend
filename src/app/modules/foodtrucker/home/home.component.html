@@ -13,6 +13,6 @@
     <h5 *ngIf="!truck.id" >Usted aun no cargo su truck</h5>
   </div>
   <div class="modal-body">
-    <app-truck-form [truck]="truck" (closeEvent)="closeModal($event)" (submitEvent)="submitForm($event)"></app-truck-form>
+    <app-truck-form [truck]="truck" (closeEvent)="closeModal($event)"></app-truck-form>
   </div>
 </ng-template>

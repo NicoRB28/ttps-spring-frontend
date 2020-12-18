@@ -9,6 +9,8 @@ import { HomeComponent } from './modules/foodtrucker/home/home.component';
 import { FoodTruckerPermision } from './model/foodTruckerPermision';
 import { FoodtruckerDashboardComponent } from './modules/foodtrucker/foodtrucker-dashboard/foodtrucker-dashboard.component';
 import { TruckFormComponent } from './modules/truck/truck-form/truck-form.component';
+import { EditComponent } from './modules/user/edit/edit.component';
+import { EventplannerPermision } from './model/eventplannerPermision';
 
 
 
@@ -16,10 +18,11 @@ const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
   {path:"events", component:EventDashboardComponent,canActivate: [AuthGuard, FoodTruckerPermision]},
-  {path:"eventForm", component:EventCreateFormComponent},
-  {path:"foodtrucker", component:HomeComponent},
-  {path:"tuckerDashboard", component:FoodtruckerDashboardComponent},
-  {path:"truckForm", component:TruckFormComponent},
+  {path:"eventForm", component:EventCreateFormComponent, canActivate:[AuthGuard,FoodTruckerPermision]},
+  {path:"foodtrucker", component:HomeComponent, canActivate:[AuthGuard,EventplannerPermision]},
+  {path:"truckerDashboard", component:FoodtruckerDashboardComponent, canActivate:[AuthGuard,EventplannerPermision]},
+  {path:"truckForm", component:TruckFormComponent, canActivate:[AuthGuard,EventplannerPermision]},
+  {path:"edit", component:EditComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({

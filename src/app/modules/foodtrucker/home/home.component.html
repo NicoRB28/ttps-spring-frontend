@@ -4,15 +4,25 @@
   <hr class="my-4">
   <p>Encuentra eventos, brinda tus servicios y más!</p>
   <a class="btn btn-primary btn-lg" (click)="showModal()">Mi Truck</a>
+  <a class="btn ml-4 btn-secondary btn-lg" (click)="showModalEdit()">Mis Datos</a>
 </div>
+<!-- Modal para editar usuario -->
+<ng-template #formEditUser let-modal>
+  <div class="modal-header">
+    <h4  class="modal-title" id="modal-basic-title">Mis Datos</h4>
+  </div>
+  <div class="modal-body">
+    <app-edit [user]="user" (closeEvent)="close($event)" (editSubmit)="submitEditForm($event)"></app-edit>
+  </div>
+</ng-template>
 
-
+<!-- modal para editar Truck -->
 <ng-template #formTruck let-modal>
   <div class="modal-header">
     <h4  class="modal-title" id="modal-basic-title">Truck</h4>
     <h5 *ngIf="!truck.id" >Usted aun no cargo su truck</h5>
   </div>
   <div class="modal-body">
-    <app-truck-form [truck]="truck" (closeEvent)="closeModal($event)"></app-truck-form>
+    <app-truck-form [truck]="truck" (editEvent)="edit($event)"  (submitEvent)="submitCreate($event)" (closeEvent)="closeModal($event)"></app-truck-form>
   </div>
 </ng-template>

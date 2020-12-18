@@ -22,6 +22,12 @@ export class TruckFormComponent implements OnInit{
   @Output()
   closeEvent: EventEmitter<Truck> = new EventEmitter();
 
+  @Output()
+  submitEvent: EventEmitter<CreateTruck> = new EventEmitter();
+
+  @Output()
+  editEvent: EventEmitter<CreateTruck> = new EventEmitter();
+
   createRequest: CreateTruck = new CreateTruck();
 
   newTruck: Truck = new Truck();
@@ -53,19 +59,24 @@ export class TruckFormComponent implements OnInit{
         whatsapp:[this.truck.whatsapp],
         instagram:[this.truck.instagram],
         twitter:[this.truck.twitter ],
-        tag1:[''],
-        tag2:[''],
-        tag3:[''],
+        tag1:[this.truck.tags.pop()],
+        tag2:[this.truck.tags.pop()],
+        tag3:[this.truck.tags.pop()],
       });
 
     }
 
     submitForm(){
       this.setRequestValues();
-      this.sandbox.createTruck(this.createRequest);
+      //this.sandbox.createTruck(this.createRequest);
+      this.submitEvent.emit(this.createRequest);
       this.closeModal();
     }
 
+    edit():void{
+      this.setRequestValues();
+      this.editEvent.emit(this.createRequest);
+    }
 
     setRequestValues():void{
       this.createRequest.name = this.form.controls["name"].value;
@@ -81,6 +92,16 @@ export class TruckFormComponent implements OnInit{
       this.createRequest.tags.push(this.form.controls["tag3"].value);
     }
 
+    delete():void{
+      // this.setRequestValues();
+      // this.createRequest.tags = [];
+
+      // this.sandbox.delete(this.truck.id);
+      this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
+        this.newTruck = data;
+      });
+      this.closeEvent.emit(this.newTruck);
+    }
 
     closeModal():void{
       this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {

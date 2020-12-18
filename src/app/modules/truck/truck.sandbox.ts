@@ -30,6 +30,17 @@ export class TruckSandbox {
   updateTruck(data, id):void{
     this.http.updateTruck(data, id).subscribe(res => {
       this.truck$.next(res);
+      this.toastr.success("Truck Editado");
+    }, error => {
+      this.toastr.error("ERROR al editar el truck");
+    });
+  }
+
+  delete(id:number):void{
+    this.http.delete(id).subscribe(data => {
+      this.toastr.success("Truck eliminado");
+    }, error => {
+      this.toastr.error("error al eliminiar el truck");
     });
   }
 }

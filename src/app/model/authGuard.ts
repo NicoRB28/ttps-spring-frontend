@@ -17,13 +17,4 @@ export class AuthGuard implements CanActivate{
     }
     return true;
   }
-
-  hasFoodtruckerPermision():boolean{
-    if(this.authService.getUserLoggedIn().type === "FoodTrucker"){
-      this.toastr.error("No puedes acceder a este recurso");
-      this.router.navigate(['home']);
-      return false;
-    }
-    return true;
-  }
 }

@@ -4,6 +4,7 @@ import { Truck } from 'src/app/model/truck';
 import { LoginService } from '../../core/util-services/login.service';
 import { UtilService } from '../../core/util-services/util.service';
 import { TruckSandbox } from '../../truck/truck.sandbox';
+import { UserSandbox } from '../../user/user.sandbox';
 
 @Component({
   selector: 'app-foodtrucker-dashboard',
@@ -17,7 +18,8 @@ export class FoodtruckerDashboardComponent implements OnInit, OnChanges {
   constructor(private sandbox: TruckSandbox,
               private loginService: LoginService,
               private router: Router,
-              private utilService: UtilService) { }
+              private utilService: UtilService,
+              private userSandbox: UserSandbox) { }
 
   ngOnInit(): void {
   }
@@ -30,4 +32,11 @@ export class FoodtruckerDashboardComponent implements OnInit, OnChanges {
       this.router.navigate(['truckForm']);
   }
 
+  goToFoodTruckerHome():void {
+    this.router.navigate(['truckerDashboard']);
+  }
+
+  closeSesion():void{
+    this.userSandbox.closeSesion();
+  }
 }

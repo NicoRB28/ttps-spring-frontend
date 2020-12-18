@@ -3,63 +3,99 @@
 <div class="container mt-4">
   <form [formGroup]="form" *ngIf="truck" (ngSubmit)="submitForm()">
     <ng-template #showLoadingState>
-      <h3>Cargando</h3>
+      <div class="row">
+        <h3>Cargando</h3>
+      </div>
     </ng-template>
     <div class="row">
       <div class="col form-group">
         <label for="name">Nombre:</label>
         <input formControlName="name"
-               type="text"
+        type="text"
                class="form-control"
                id="nombre"
                aria-describedby="nombre">
-      </div>
+              </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="description">Descripción:</label>
-        <input formControlName="description" type="text" class="form-control" id="description" aria-describedby="description">
+        <input
+        formControlName="description"
+        type="text" class="form-control"
+        id="description"
+        aria-describedby="description">
       </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="uri">Web:</label>
-        <input formControlName="uri" type="url" class="form-control" id="uri">
+        <input
+        formControlName="uri"
+        type="url"
+        class="form-control"
+        id="uri">
       </div>
       <div class="col form-group">
         <label for="whatsapp">Whatsapp:</label>
-        <input formControlName="whatsapp" type="text" class="form-control" id="whatsapp">
+        <input
+        formControlName="whatsapp"
+        type="text"
+        class="form-control"
+        id="whatsapp">
       </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="instagram">Instagram:</label>
-        <input formControlName="instagram" type="text" class="form-control" id="instagram">
+        <input
+          formControlName="instagram"
+          type="text"
+          class="form-control"
+          id="instagram">
+        </div>
+        <div class="col form-group">
+          <label for="twitter">twitter:</label>
+          <input
+          formControlName="twitter"
+          type="text"
+          class="form-control"
+          id="twitter">
+        </div>
       </div>
-      <div class="col form-group">
-        <label for="twitter">twitter:</label>
-        <input formControlName="twitter" type="text" class="form-control" id="twitter">
-      </div>
-    </div>
     <div class="row">
       <div class="col form-group">
         <label for="tag1">Tag:</label>
-        <input formControlName="tag1" id="tag1" class="form-control" type="text">
+        <input
+        formControlName="tag1"
+        id="tag1"
+          class="form-control"
+          type="text">
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col form-group">
-        <label for="tag2">Tag:</label>
-        <input formControlName="tag2" id="tag2" class="form-control" type="text">
+      <div class="row">
+        <div class="col form-group">
+          <label for="tag2">Tag:</label>
+        <input
+        formControlName="tag2"
+        id="tag2"
+        class="form-control"
+        type="text">
       </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="tag3">Tag:</label>
-        <input formControlName="tag3" id="tag3" class="form-control" type="text">
+        <input
+        formControlName="tag3"
+          id="tag3"
+          class="form-control"
+          type="text">
       </div>
     </div>
-    <button type="submit" class="btn  btn-primary">Submit</button>
+    <button type="submit" *ngIf="!truck.id" class="btn mb-2  btn-primary">Guardar</button>
+    <button type="button" *ngIf="truck.id" class="btn mb-2  btn-primary" (click)="edit()" >Editar</button>
+    <button type="button" *ngIf="truck.id" class="btn mb-2  btn-primary" (click)="delete()" class="btn btn-danger">Eliminar</button>
+    <button type="button" class="btn mb-2 ml-3 ml-3 btn-secondary" (click)="closeModal()">cancelar</button>
   </form>
-  <button type="button" class="btn mt-3 ml-3 btn-secondary" (click)="closeModal()">close</button>
 </div>

@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/modules/core/util-services/login.service';
 
 @Injectable()
-export class FoodTruckerPermision implements CanActivate{
+export class EventplannerPermision implements CanActivate{
 
   constructor(private authService: LoginService,
               private router: Router,
@@ -12,7 +12,7 @@ export class FoodTruckerPermision implements CanActivate{
 
 
   canActivate():boolean {
-    if(this.authService.getUserLoggedIn().type === "FoodTrucker"){
+    if(this.authService.getUserLoggedIn().type === "EventPlanner"){
       this.toastr.error("No puedes acceder a este recurso");
       this.router.navigate(['foodtrucker']);
       return false;

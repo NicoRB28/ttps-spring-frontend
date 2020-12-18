@@ -2,6 +2,7 @@
   <table class="table table-striped table-dark">
     <thead>
       <tr>
+        <th scope="col">id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Lugar</th>
         <th scope="col">Fecha</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let event of events">
+        <td>{{event.id}}</td>
         <td>{{event.name}}</td>
         <td>{{event.address}}, {{event.state}}, {{event.province}}</td>
         <td>{{event.dayAndTime | date: 'shortDate'}}</td>

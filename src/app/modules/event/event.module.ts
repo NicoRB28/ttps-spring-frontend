@@ -9,6 +9,7 @@ import { EventCreateFormComponent } from './event-create-form/event-create-form.
   declarations:[EventListComponent, EventDashboardComponent, EventCreateFormComponent],
   imports:[
     ShareModule
-  ]
+  ],
+  exports:[EventListComponent,EventDashboardComponent],
 })
 export class EventModule {}

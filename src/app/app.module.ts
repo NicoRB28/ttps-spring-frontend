@@ -13,7 +13,7 @@ import { FoodTruckerPermision } from './model/foodTruckerPermision';
 import { FoodTruckerModule } from './modules/foodtrucker/foodtrucker.module';
 import { TruckerModule } from './modules/truck/truck.module';
 import { EventplannerPermision } from './model/eventplannerPermision';
-
+import { EventPlannerModule } from './modules/eventplanner/eventplanner.module';
 
 
 
@@ -32,7 +32,7 @@ import { EventplannerPermision } from './model/eventplannerPermision';
     UserModule,
     FoodTruckerModule,
     TruckerModule,
-
+    EventPlannerModule
   ],
   providers: [AuthGuard, FoodTruckerPermision, EventplannerPermision],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { CreateTruck } from 'src/app/model/createTruck';
 import { Truck } from 'src/app/model/truck';
 import { TruckHttpService } from '../core/http/truck-http.service';
+import { LoginService } from '../core/util-services/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class TruckSandbox {
   truck$: Subject<Truck> = new Subject();
 
   constructor(private http: TruckHttpService,
-              private toastr: ToastrService){}
+              private toastr: ToastrService,
+              private loginService: LoginService){}
 
   createTruck(request:CreateTruck):void {
     this.http.createTruck(request).subscribe(res =>{
@@ -38,6 +40,9 @@ export class TruckSandbox {
 
   delete(id:number):void{
     this.http.delete(id).subscribe(data => {
+      this.http.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
+        this.truck$.next(data);
+      })
       this.toastr.success("Truck eliminado");
     }, error => {
       this.toastr.error("error al eliminiar el truck");

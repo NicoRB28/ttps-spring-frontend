@@ -94,4 +94,9 @@ export class HomeComponent implements OnInit{
     this.modalRef.close();
   }
 
+  delete(truck:Truck):void{
+    this.sandbox.delete(truck.id);
+    this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId);
+    this.modalRef.close();
+  }
 }

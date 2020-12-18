@@ -16,7 +16,7 @@ export class TruckHttpService {
   constructor(private http: HttpClient) { }
 
   delete(id:number):Observable<any>{
-    return this.http.delete(this.baseUrl + "/" + `${id}`);
+    return this.http.delete(this.baseUrl+"/"+`${id}`);
   }
 
   createTruck(request: CreateTruck):Observable<CreateTruck> {

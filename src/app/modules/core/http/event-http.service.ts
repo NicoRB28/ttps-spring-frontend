@@ -24,7 +24,6 @@ export class EventHttpService {
   }
 
   update(data:Event):Observable<Event> {
-    //TODO: no funciona, data.id imprime undefine
     console.log(data.id);
     return this.http.put<Event>(this.baseUrl+`${data.id}`, data);
   }

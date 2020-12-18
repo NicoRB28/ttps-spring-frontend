@@ -11,12 +11,13 @@ import { FoodtruckerDashboardComponent } from './modules/foodtrucker/foodtrucker
 import { TruckFormComponent } from './modules/truck/truck-form/truck-form.component';
 import { EditComponent } from './modules/user/edit/edit.component';
 import { EventplannerPermision } from './model/eventplannerPermision';
-
+import { HomeEventPlannerComponent } from './modules/eventplanner/home-event-planner/home-event-planner.component';
 
 
 const routes: Routes = [
   {path:"login", component:LoginComponent},
   {path:"register", component:RegisterComponent},
+  {path:"eventPlannerHome", component:HomeEventPlannerComponent, canActivate:[AuthGuard, FoodTruckerPermision]},
   {path:"events", component:EventDashboardComponent,canActivate: [AuthGuard, FoodTruckerPermision]},
   {path:"eventForm", component:EventCreateFormComponent, canActivate:[AuthGuard,FoodTruckerPermision]},
   {path:"foodtrucker", component:HomeComponent, canActivate:[AuthGuard,EventplannerPermision]},

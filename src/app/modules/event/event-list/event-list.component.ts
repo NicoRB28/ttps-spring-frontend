@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Event } from 'src/app/model/event';
 import { UtilService } from '../../core/util-services/util.service';
 import { EventSandbox } from '../event.sandbox';
@@ -13,6 +13,7 @@ export class EventListComponent implements OnInit{
   @Input("events")
   events: Event[] = [];
 
+  @Output()
   data:Event = new Event();
 
   modalRef;
@@ -40,8 +41,6 @@ export class EventListComponent implements OnInit{
   }
 
   submitForm(event:Event):void {
-    //TODO: pegar al endpoint de update
-    console.log(event);
     this.eventSandbox.updateEvent(event);
     this.closeModalForm(event);
   }

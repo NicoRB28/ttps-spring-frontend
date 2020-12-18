@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { EventModule } from '../event/event.module';
 import { ShareModule } from '../share/share.module';
 import { HomeEventPlannerComponent } from './home-event-planner/home-event-planner.component';
 
@@ -10,4 +11,4 @@ import { HomeEventPlannerComponent } from './home-event-planner/home-event-plann
     EventModule,
   ]
 })
-export class EventModule {}
+export class EventPlannerModule {}

@@ -95,7 +95,7 @@
     </div>
     <button type="submit" *ngIf="!truck.id" class="btn mb-2  btn-primary">Guardar</button>
     <button type="button" *ngIf="truck.id" class="btn mb-2  btn-primary" (click)="edit()" >Editar</button>
-    <button type="button" *ngIf="truck.id" class="btn mb-2  btn-primary" (click)="delete()" class="btn btn-danger">Eliminar</button>
     <button type="button" class="btn mb-2 ml-3 ml-3 btn-secondary" (click)="closeModal()">cancelar</button>
+    <button type="button" *ngIf="truck.id"  (click)="delete()" class="btn ml-3 mb-2 btn-danger">Eliminar</button>
   </form>
 </div>

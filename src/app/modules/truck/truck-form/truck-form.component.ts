@@ -6,6 +6,8 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { LoginService } from '../../core/util-services/login.service';
 import { TruckSandbox } from '../truck.sandbox';
 import { Subject } from 'rxjs';
+import { EventModule } from '../../event/event.module';
+import { Event } from 'src/app/model/event';
 
 @Component({
   selector: 'app-truck-form',
@@ -27,6 +29,9 @@ export class TruckFormComponent implements OnInit{
 
   @Output()
   editEvent: EventEmitter<CreateTruck> = new EventEmitter();
+
+  @Output()
+  deleteEvent: EventEmitter<Truck> = new EventEmitter();
 
   createRequest: CreateTruck = new CreateTruck();
 
@@ -93,14 +98,10 @@ export class TruckFormComponent implements OnInit{
     }
 
     delete():void{
-      // this.setRequestValues();
-      // this.createRequest.tags = [];
-
-      // this.sandbox.delete(this.truck.id);
       this.sandbox.getUserTruck(this.loginService.getUserLoggedIn().userId).subscribe(data => {
         this.newTruck = data;
       });
-      this.closeEvent.emit(this.newTruck);
+      this.deleteEvent.emit(this.truck);
     }
 
     closeModal():void{

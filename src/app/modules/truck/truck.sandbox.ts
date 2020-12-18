@@ -38,6 +38,7 @@ export class TruckSandbox {
 
   delete(id:number):void{
     this.http.delete(id).subscribe(data => {
+      this.truck$.next(new Truck());
       this.toastr.success("Truck eliminado");
     }, error => {
       this.toastr.error("error al eliminiar el truck");

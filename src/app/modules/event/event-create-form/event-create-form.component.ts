@@ -70,5 +70,6 @@ export class EventCreateFormComponent implements OnInit {
     this.newEvent.state = this.form.controls["state"].value;
     this.newEvent.zipCode = this.form.controls["zipCode"].value;
     this.newEvent.city = this.form.controls["city"].value;
+    this.newEvent.id = this.data.id;
   }
 }

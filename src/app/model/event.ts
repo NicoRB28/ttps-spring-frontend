@@ -1,9 +1,9 @@
 import { EventPlannerSandbox } from '../modules/eventplanner/eventplanner.sandbox';
 
 export class Event {
-  id: number;
   // trucks: Truck[];
   // eventPlanner: EventPlanner;
+  id: number;
   state: string;
   name: string;
   address: string;

@@ -32,7 +32,7 @@ export class UserSandbox {
         this.router.navigate(['truckerDashboard']);
       }else{
         this.toastr.success("Bienvenido EventPlanner");
-        this.router.navigate(['events']);
+        this.router.navigate(['eventPlannerHome']);
       }
     }, error => {
       this.toastr.error("No ha sido posible iniciar sesión");

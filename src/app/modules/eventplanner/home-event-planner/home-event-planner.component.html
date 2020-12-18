@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <p class="navbar-brand">Food & Events</p>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="goToEventPlannerHome()" style="cursor:pointer;">
+          Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="closeSesion()" style="cursor:pointer;">
+          Cerrar Sesion
+        </a>
+      </li>
+      <!-- routerLink="/truckForm" -->
+    <!-- <li class="nav-item">
+        <a class="nav-link" (click)="goToForm()" style="cursor: pointer;">
+          Mi Truck
+        </a>
+      </li> -->
+    </ul>
+    <span class="navbar-text">
+      Amamos los eventos y la comida
+    </span>
+  </div>
+</nav>
+<app-event-list></app-event-list>
